@@ -1,0 +1,66 @@
+const fs = require('fs');
+const async = require('async');
+const parseMidi = require('midi-file').parseMidi;
+const midi = require('midi');
+
+// https://github.com/SpotlightKid/python-rtmidi/blob/master/rtmidi/midiconstants.py
+
+const NOTE_ON /* channel 1 */ = 144;
+const NOTE_OFF /* channel 1 */ = 128;
+
+const readMidi = () => {
+    var input = fs.readFileSync('2HARMO3E.MID');
+    var parsed = parseMidi(input);
+
+    const { header, tracks } = parsed;
+
+    console.log({ header });
+    const chunked = {
+        metaTracks: tracks[0].filter(x => x.meta),
+        tracks: tracks[0].filter(x => !x.meta)
+    };
+    console.log(chunked)
+    return chunked;
+}
+
+const playOneNote = (output, convertTime) => (note, callback) => {
+    const { deltaTime, type, noteNumber, velocity } = note;
+    if (type === "programChange"){
+        return callback();
+    }
+    const convertedNote = [
+        type === 'noteOn' ? NOTE_ON : NOTE_OFF,
+        noteNumber,
+        velocity
+    ];
+    setTimeout(() => {
+        output.sendMessage(convertedNote);
+        console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
+        callback();
+    }, convertTime(deltaTime));
+}
+
+const playNotes = (output) => (notes, callback) => {
+    const convertTime = (deltaTime) => {
+        if(!deltaTime){
+            return 0;
+        }
+        //TODO: should look at header info and determine this instead
+        return Number((deltaTime / 3).toFixed(2));
+    };
+    async.eachSeries(notes, playOneNote(output, convertTime), callback);
+};
+
+const playMidi = (track) => {
+    const output = new midi.Output();
+    const PORT = 0;
+    //const PORT = 1;
+    output.openPort(PORT);
+
+    playNotes(output)(track, () => {
+        output.closePort();
+    });
+};
+
+const track = readMidi().tracks;
+playMidi(track);
