@@ -8,6 +8,12 @@ const midi = require('midi');
 const NOTE_ON /* channel 1 */ = 144;
 const NOTE_OFF /* channel 1 */ = 128;
 
+const PROGRAM_CHANGE /* channel 1 */ = 192;
+
+/* this overrides patch in track */
+const PATCHNUMBER = 33;
+// const PATCHNUMBER = undefined;
+
 const readMidi = () => {
     var input = fs.readFileSync('2HARMO3E.MID');
     var parsed = parseMidi(input);
@@ -24,8 +30,13 @@ const readMidi = () => {
 }
 
 const playOneNote = (output, convertTime) => (note, callback) => {
-    const { deltaTime, type, noteNumber, velocity } = note;
+    const { deltaTime, type, noteNumber, velocity, programNumber } = note;
     if (type === "programChange"){
+        const note = [
+            PROGRAM_CHANGE,
+            PATCHNUMBER || programNumber
+        ];
+        output.sendMessage(note);
         return callback();
     }
     const convertedNote = [
@@ -46,7 +57,7 @@ const playNotes = (output) => (notes, callback) => {
             return 0;
         }
         //TODO: should look at header info and determine this instead
-        return Number((deltaTime / 3).toFixed(2));
+        return Number((deltaTime / 8).toFixed(2));
     };
     async.eachSeries(notes, playOneNote(output, convertTime), callback);
 };
