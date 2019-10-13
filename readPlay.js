@@ -11,8 +11,10 @@ const NOTE_OFF /* channel 1 */ = 128;
 const PROGRAM_CHANGE /* channel 1 */ = 192;
 
 /* this overrides patch in track */
-const PATCHNUMBER = 33;
-// const PATCHNUMBER = undefined;
+const PATCHNUMBER = 13;  //(381 is 446 on keyboard)
+const NOTENUMBER = 31; //44;
+const VOLUME = 127;
+const REPEAT = 1900;
 
 const readMidi = () => {
     var input = fs.readFileSync('2HARMO3E.MID');
@@ -20,12 +22,12 @@ const readMidi = () => {
 
     const { header, tracks } = parsed;
 
-    console.log({ header });
+    //console.log({ header });
     const chunked = {
         metaTracks: tracks[0].filter(x => x.meta),
         tracks: tracks[0].filter(x => !x.meta)
     };
-    console.log(chunked)
+    //console.log(chunked)
     return chunked;
 }
 
@@ -41,12 +43,12 @@ const playOneNote = (output, convertTime) => (note, callback) => {
     }
     const convertedNote = [
         type === 'noteOn' ? NOTE_ON : NOTE_OFF,
-        noteNumber,
-        velocity
+        NOTENUMBER || noteNumber,
+        VOLUME || velocity
     ];
     setTimeout(() => {
         output.sendMessage(convertedNote);
-        console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
+        //console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
         callback();
     }, convertTime(deltaTime));
 }
@@ -64,8 +66,8 @@ const playNotes = (output) => (notes, callback) => {
 
 const playMidi = (track) => {
     const output = new midi.Output();
-    const PORT = 0;
-    //const PORT = 1;
+    //const PORT = 0;
+    const PORT = 1;
     output.openPort(PORT);
 
     playNotes(output)(track, () => {
@@ -74,4 +76,10 @@ const playMidi = (track) => {
 };
 
 const track = readMidi().tracks;
-playMidi(track);
+//console.log({ track });
+console.log('-- playing');
+
+setInterval(() => {
+  playMidi(track);
+}, REPEAT)
+
