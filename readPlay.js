@@ -12,7 +12,7 @@ const PROGRAM_CHANGE /* channel 1 */ = 192;
 
 /* this overrides patch in track */
 const PATCHNUMBER = 13;  //(381 is 446 on keyboard)
-const NOTENUMBER = 31; //44;
+const NOTENUMBER = 44; //44;
 const VOLUME = 127;
 const REPEAT = 1900;
 
