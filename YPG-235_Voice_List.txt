@@ -1,0 +1,556 @@
+YPG-235 Voice List
+
+VOICE, MSB, LSB, PC, NAME
+
+PIANO
+001 000 112 001 Grand Piano
+002 000 112 002 Bright Piano
+003 000 112 007 Harpsichord
+004 000 112 004 Honky-tonk Piano
+005 000 112 003 MIDI Grand Piano
+006 000 113 003 CP 80
+
+E.PIANO
+007 000 114 005 Cool! Galaxy Electric Piano
+008 000 113 006 Hyper Tines
+009 000 112 005 Funky Electric Piano
+010 000 112 006 DX Modern Electric Piano
+011 000 114 006 Venus Electric Piano
+012 000 112 008 Clavi
+
+ORGAN
+013 000 118 019 Cool! Organ
+014 000 117 019 Cool! Rotor Organ
+015 000 112 017 Jazz Organ 1
+016 000 113 017 Jazz Organ 2
+017 000 112 019 Rock Organ
+018 000 114 019 Purple Organ
+019 000 112 018 Click Organ
+020 000 116 017 Bright Organ
+021 000 127 019 Theater Organ
+022 000 121 020 16'+2' Organ
+023 000 120 020 16'+4' Organ
+024 000 113 020 Chapel Organ
+025 000 112 020 Church Organ
+026 000 112 021 Reed Organ
+
+ACCORDION
+027 000 112 022 Musette Accordion
+028 000 113 022 Traditional Accordion
+029 000 113 024 Bandoneon
+030 000 113 023 Modern Harp
+031 000 112 023 Harmonica
+
+GUITAR
+032 000 112 025 Classical Guitar
+033 000 112 026 Folk Guitar
+034 000 112 027 Jazz Guitar
+035 000 117 028 60’s Clean Guitar
+036 000 113 026 12Strings Guitar
+037 000 112 028 Clean Guitar
+038 000 113 027 Octave Guitar
+039 000 112 029 Muted Guitar
+040 000 112 030 Overdriven Guitar
+041 000 112 031 Distortion Guitar
+
+BASS
+042 000 112 034 Finger Bass
+043 000 112 033 Acoustic Bass
+044 000 112 035 Pick Bass
+045 000 112 036 Fretless Bass
+046 000 112 037 Slap Bass
+047 000 112 039 Synth Bass
+048 000 113 039 Hi-Q Bass
+049 000 113 040 Dance Bass
+
+STRINGS
+050 000 112 049 String Ensemble
+051 000 112 050 Chamber Strings
+052 000 113 050 Slow Strings
+053 000 112 045 Tremolo Strings
+054 000 112 051 Synth Strings
+055 000 112 046 Pizzicato Strings
+056 000 112 041 Violin
+057 000 112 043 Cello
+058 000 112 044 Contrabass
+059 000 112 047 Harp
+060 000 112 106 Banjo
+061 000 112 056 Orchestra Hit
+
+CHOIR
+062 000 112 053 Choir
+063 000 113 053 Vocal Ensemble
+064 000 112 055 Air Choir
+065 000 112 054 Vox Humana
+
+SAXOPHONE
+066 000 117 067 Sweet! Tenor Sax
+067 000 113 065 Sweet! Soprano Sax
+068 000 112 067 Tenor Sax
+069 000 112 066 Alto Sax
+070 000 112 065 Soprano Sax
+071 000 112 068 Baritone Sax
+072 000 114 067 Breathy Tenor Sax
+073 000 112 072 Clarinet
+074 000 112 069 Oboe
+075 000 112 070 English Horn
+076 000 112 071 Bassoon
+
+TRUMPET
+077 000 115 057 Sweet! Trumpet
+078 000 112 057 Trumpet
+079 000 112 058 Trombone
+080 000 113 058 Trombone Section
+081 000 112 060 Muted Trumpet
+082 000 112 061 French Horn
+083 000 112 059 Tuba
+
+BRASS
+084 000 112 062 Brass Section
+085 000 113 062 Big Band Brass
+086 000 113 063 80’s Brass
+087 000 119 062 Mellow Horns
+088 000 114 063 Techno Brass
+089 000 112 063 Synth Brass
+
+FLUTE
+090 000 114 074 Sweet! Flute
+091 000 113 076 Sweet! Pan Flute
+092 000 112 074 Flute
+093 000 112 073 Piccolo
+094 000 112 076 Pan Flute
+095 000 112 075 Recorder
+096 000 112 080 Ocarina
+
+SYNTH LEAD
+097 000 112 081 Square Lead
+098 000 112 082 Sawtooth Lead
+099 000 115 082 Analogon
+100 000 119 082 Fargo
+101 000 112 099 Star Dust
+102 000 112 086 Voice Lead
+103 000 112 101 Brightness
+
+SYNTH PAD
+104 000 112 092 Xenon Pad
+105 000 112 095 Equinox
+106 000 112 089 Fantasia
+107 000 113 090 Dark Moon
+108 000 113 101 Bell Pad
+
+PERCUSSION
+109 000 112 012 Vibraphone
+110 000 112 013 Marimba
+111 000 112 014 Xylophone
+112 000 112 115 Steel Drums
+113 000 112 009 Celesta
+114 000 112 011 Music Box
+115 000 112 015 Tubular Bells
+116 000 112 048 Timpani
+
+DRUM KITS
+117 127 000 001 Standard Kit 1
+118 127 000 002 Standard Kit 2
+119 127 000 009 Room Kit
+120 127 000 017 Rock Kit
+121 127 000 025 Electronic Kit
+122 127 000 026 Analog Kit
+123 127 000 113 Dance Kit
+124 127 000 033 Jazz Kit
+125 127 000 041 Brush Kit
+126 127 000 049 Symphony Kit
+127 126 000 001 SFX Kit 1
+128 126 000 002 SFX Kit 2
+
+PIANO
+129 000 000 001 Grand Piano
+130 000 001 001 Grand Piano KSP
+131 000 040 001 Piano Strings
+132 000 041 001 Dream
+133 000 000 002 Bright Piano
+134 000 001 002 Bright Piano KSP
+135 000 000 003 Electric Grand Piano
+136 000 001 003 Electric Grand Piano KSP
+137 000 032 003 Detuned CP80
+138 000 000 004 Honky-tonk Piano
+139 000 001 004 Honky-tonk Piano KSP
+140 000 000 005 Electric Piano 1
+141 000 001 005 Electric Piano 1 KSP
+142 000 032 005 Chorus Electric Piano 1
+143 000 000 006 Electric Piano 2
+144 000 001 006 Electric Piano 2 KSP
+145 000 032 006 Chorus Electric Piano 2
+146 000 041 006 DX + Analog Electric Piano
+147 000 000 007 Harpsichord
+148 000 001 007 Harpsichord KSP
+149 000 035 007 Harpsichord 2
+150 000 000 008 Clavi
+151 000 001 008 Clavi KSP
+
+CHROMATIC
+152 000 000 009 Celesta
+153 000 000 010 Glockenspiel
+154 000 000 011 Music Box
+155 000 064 011 Orgel
+156 000 000 012 Vibraphone
+157 000 001 012 Vibraphone KSP
+158 000 000 013 Marimba
+159 000 001 013 Marimba KSP
+160 000 064 013 Sine Marimba
+161 000 097 013 Balimba
+162 000 098 013 Log Drums
+163 000 000 014 Xylophone
+164 000 000 015 Tubular Bells
+165 000 096 015 Church Bells
+166 000 097 015 Carillon
+167 000 000 016 Dulcimer
+168 000 035 016 Dulcimer 2
+169 000 096 016 Cimbalom
+170 000 097 016 Santur
+
+ORGAN
+171 000 000 017 Drawbar Organ
+172 000 032 017 Detuned Drawbar Organ
+173 000 033 017 60’s Drawbar Organ 1
+174 000 034 017 60’s Drawbar Organ 2
+175 000 035 017 70’s Drawbar Organ 1
+176 000 037 017 60’s Drawbar Organ 3
+177 000 040 017 16+2'2/3
+178 000 064 017 Organ Bass
+179 000 065 017 70’s Drawbar Organ 2
+180 000 066 017 Cheezy Organ
+181 000 067 017 Drawbar Organ 2
+182 000 000 018 Percussive Organ
+183 000 024 018 70’s Percussive Organ
+184 000 032 018 Detuned Percussive Organ
+185 000 033 018 Light Organ
+186 000 037 018 Percussive Organ 2
+187 000 000 019 Rock Organ
+188 000 064 019 Rotary Organ
+189 000 065 019 Slow Rotary
+190 000 066 019 Fast Rotary
+191 000 000 020 Church Organ
+192 000 032 020 Church Organ 3
+193 000 035 020 Church Organ 2
+194 000 040 020 Notre Dame
+195 000 064 020 Organ Flute
+196 000 065 020 Tremolo Organ Flute
+197 000 000 021 Reed Organ
+198 000 040 021 Puff Organ
+199 000 000 022 Accordion
+200 000 000 023 Harmonica
+201 000 032 023 Harmonica 2
+202 000 000 024 Tango Accordion
+203 000 064 024 Tango Accordion 2
+
+GUITAR
+204 000 000 025 Nylon Guitar
+205 000 043 025 Velocity Guitar Harmonics
+206 000 096 025 Ukulele
+207 000 000 026 Steel Guitar
+208 000 035 026 12-string Guitar
+209 000 040 026 Nylon & Steel Guitar
+210 000 041 026 Steel Guitar with Body Sound
+211 000 096 026 Mandolin
+212 000 000 027 Jazz Guitar
+213 000 032 027 Jazz Amp
+214 000 000 028 Clean Guitar
+215 000 032 028 Chorus Guitar
+216 000 000 029 Muted Guitar
+217 000 040 029 Funk Guitar
+218 000 041 029 Muted Steel Guitar
+219 000 045 029 Jazz Man
+220 000 000 030 Overdriven Guitar
+221 000 043 030 Guitar Pinch
+222 000 000 031 Distortion Guitar
+223 000 040 031 Feedback Guitar
+224 000 041 031 Feedback Guitar 2
+225 000 000 032 Guitar Harmonics
+226 000 065 032 Guitar Feedback
+227 000 066 032 Guitar Harmonics 2
+
+BASS
+228 000 000 033 Acoustic Bass
+229 000 040 033 Jazz Rhythm
+230 000 045 033 Velocity Crossfade Upright Bass
+231 000 000 034 Finger Bass
+232 000 018 034 Finger Dark
+233 000 040 034 Bass & Distorted Electric Guitar
+234 000 043 034 Finger Slap Bass
+235 000 045 034 Finger Bass 2
+236 000 065 034 Modulated Bass
+237 000 000 035 Pick Bass
+238 000 028 035 Muted Pick Bass
+239 000 000 036 Fretless Bass
+240 000 032 036 Fretless Bass 2
+241 000 033 036 Fretless Bass 3
+242 000 034 036 Fretless Bass 4
+243 000 000 037 Slap Bass 1
+244 000 032 037 Punch Thumb Bass
+245 000 000 038 Slap Bass 2
+246 000 043 038 Velocity Switch Slap
+247 000 000 039 Synth Bass 1
+248 000 040 039 Techno Synth Bass
+249 000 000 040 Synth Bass 2
+250 000 006 040 Mellow Synth Bass
+251 000 012 040 Sequenced Bass
+252 000 018 040 Click Synth Bass
+253 000 019 040 Synth Bass 2 Dark
+254 000 040 040 Modular Synth Bass
+255 000 041 040 DX Bass
+
+STRINGS
+256 000 000 041 Violin
+257 000 008 041 Slow Violin
+258 000 000 042 Viola
+259 000 000 043 Cello
+260 000 000 044 Contrabass
+261 000 000 045 Tremolo Strings
+262 000 008 045 Slow Tremolo Strings
+263 000 040 045 Suspense Strings
+264 000 000 046 Pizzicato Strings
+265 000 000 047 Orchestral Harp
+266 000 040 047 Yang Chin
+267 000 000 048 Timpani
+
+ENSEMBLE
+268 000 000 049 Strings 1
+269 000 003 049 Stereo Strings
+270 000 008 049 Slow Strings
+271 000 035 049 60’s Strings
+272 000 040 049 Orchestra
+273 000 041 049 Orchestra 2
+274 000 042 049 Tremolo Orchestra
+275 000 045 049 Velocity Strings
+276 000 000 050 Strings 2
+277 000 003 050 Stereo Slow Strings
+278 000 008 050 Legato Strings
+279 000 040 050 Warm Strings
+280 000 041 050 Kingdom
+281 000 000 051 Synth Strings 1
+282 000 000 052 Synth Strings 2
+283 000 000 053 Choir Aahs
+284 000 003 053 Stereo Choir
+285 000 032 053 Mellow Choir
+286 000 040 053 Choir Strings
+287 000 000 054 Voice Oohs
+288 000 000 055 Synth Voice
+289 000 040 055 Synth Voice 2
+290 000 041 055 Choral
+291 000 064 055 Analog Voice
+292 000 000 056 Orchestra Hit
+293 000 035 056 Orchestra Hit 2
+294 000 064 056 Impact
+
+BRASS
+295 000 000 057 Trumpet
+296 000 032 057 Warm Trumpet
+297 000 000 058 Trombone
+298 000 018 058 Trombone 2
+299 000 000 059 Tuba
+300 000 000 060 Muted Trumpet
+301 000 000 061 French Horn
+302 000 006 061 French Horn Solo
+303 000 032 061 French Horn 2
+304 000 037 061 Horn Orchestra
+305 000 000 062 Brass Section
+306 000 035 062 Trumpet & Trombone Section
+307 000 000 063 Synth Brass 1
+308 000 020 063 Resonant Synth Brass
+309 000 000 064 Synth Brass 2
+310 000 018 064 Soft Brass
+311 000 041 064 Choir Brass
+
+REED
+312 000 000 065 Soprano Sax
+313 000 000 066 Alto Sax
+314 000 040 066 Sax Section
+315 000 000 067 Tenor Sax
+316 000 040 067 Breathy Tenor Sax
+317 000 000 068 Baritone Sax
+318 000 000 069 Oboe
+319 000 000 070 English Horn
+320 000 000 071 Bassoon
+321 000 000 072 Clarinet
+
+PIPE
+322 000 000 073 Piccolo
+323 000 000 074 Flute
+324 000 000 075 Recorder
+325 000 000 076 Pan Flute
+326 000 000 077 Blown Bottle
+327 000 000 078 Shakuhachi
+328 000 000 079 Whistle
+329 000 000 080 Ocarina
+
+SYNTH LEAD
+330 000 000 081 Square Lead
+331 000 006 081 Square Lead 2
+332 000 008 081 LM Square
+333 000 018 081 Hollow
+334 000 019 081 Shroud
+335 000 064 081 Mellow
+336 000 065 081 Solo Sine
+337 000 066 081 Sine Lead
+338 000 000 082 Sawtooth Lead
+339 000 006 082 Sawtooth Lead 2
+340 000 008 082 Thick Sawtooth
+341 000 018 082 Dynamic Sawtooth
+342 000 019 082 Digital Sawtooth
+343 000 020 082 Big Lead
+344 000 096 082 Sequenced Analog
+345 000 000 083 Calliope Lead
+346 000 065 083 Pure Lead
+347 000 000 084 Chiff Lead
+348 000 000 085 Charang Lead
+349 000 064 085 Distorted Lead
+350 000 000 086 Voice Lead
+351 000 000 087 Fifths Lead
+352 000 035 087 Big Five
+353 000 000 088 Bass & Lead
+354 000 016 088 Big & Low
+355 000 064 088 Fat & Perky
+356 000 065 088 Soft Whirl
+
+SYNTH PAD
+357 000 000 089 New Age Pad
+358 000 064 089 Fantasy
+359 000 000 090 Warm Pad
+360 000 000 091 Poly Synth Pad
+361 000 000 092 Choir Pad
+362 000 066 092 Itopia
+363 000 000 093 Bowed Pad
+364 000 000 094 Metallic Pad
+365 000 000 095 Halo Pad
+366 000 000 096 Sweep Pad
+
+SYNTH EFFECTS
+367 000 000 097 Rain
+368 000 065 097 African Wind
+369 000 066 097 Carib
+370 000 000 098 Sound Track
+371 000 027 098 Prologue
+372 000 000 099 Crystal
+373 000 012 099 Synth Drum Comp
+374 000 014 099 Popcorn
+375 000 018 099 Tiny Bells
+376 000 035 099 Round Glockenspiel
+377 000 040 099 Glockenspiel Chimes
+378 000 041 099 Clear Bells
+379 000 042 099 Chorus Bells
+380 000 065 099 Soft Crystal
+381 000 070 099 Air Bells
+382 000 071 099 Bell Harp
+383 000 072 099 Gamelimba
+384 000 000 100 Atmosphere
+385 000 018 100 Warm Atmosphere
+386 000 019 100 Hollow Release
+387 000 040 100 Nylon Electric Piano
+388 000 064 100 Nylon Harp
+389 000 065 100 Harp Vox
+390 000 066 100 Atmosphere Pad
+391 000 000 101 Brightness
+392 000 000 102 Goblins
+393 000 064 102 Goblins Synth
+394 000 065 102 Creeper
+395 000 067 102 Ritual
+396 000 068 102 To Heaven
+397 000 070 102 Night
+398 000 071 102 Glisten
+399 000 096 102 Bell Choir
+400 000 000 103 Echoes
+401 000 000 104 Sci-Fi
+
+WORLD
+402 000 000 105 Sitar
+403 000 032 105 Detuned Sitar
+404 000 035 105 Sitar 2
+405 000 097 105 Tamboura
+406 000 000 106 Banjo
+407 000 028 106 Muted Banjo
+408 000 096 106 Rabab
+409 000 097 106 Gopichant
+410 000 098 106 Oud
+411 000 000 107 Shamisen
+412 000 000 108 Koto
+413 000 096 108 Taisho-kin
+414 000 097 108 Kanoon
+415 000 000 109 Kalimba
+416 000 000 110 Bagpipe
+417 000 000 111 Fiddle
+418 000 000 112 Shanai
+
+PERCUSSIVE
+419 000 000 113 Tinkle Bell
+420 000 096 113 Bonang
+421 000 097 113 Altair
+422 000 098 113 Gamelan Gongs
+423 000 099 113 Stereo Gamelan Gongs
+424 000 100 113 Rama Cymbal
+425 000 000 114 Agogo
+426 000 000 115 Steel Drums
+427 000 097 115 Glass Percussion
+428 000 098 115 Thai Bells
+429 000 000 116 Woodblock
+430 000 096 116 Castanets
+431 000 000 117 Taiko Drum
+432 000 096 117 Gran Cassa
+433 000 000 118 Melodic Tom
+434 000 064 118 Melodic Tom 2
+435 000 065 118 Real Tom
+436 000 066 118 Rock Tom
+437 000 000 119 Synth Drum
+438 000 064 119 Analog Tom
+439 000 065 119 Electronic Percussion
+440 000 000 120 Reverse Cymbal
+
+SOUND EFFECTS
+441 000 000 121 Fret Noise
+442 000 000 122 Breath Noise
+443 000 000 123 Seashore
+444 000 000 124 Bird Tweet
+445 000 000 125 Telephone Ring
+446 000 000 126 Helicopter
+447 000 000 127 Applause
+448 000 000 128 Gunshot
+449 064 000 001 Cutting Noise
+450 064 000 002 Cutting Noise 2
+451 064 000 004 String Slap
+452 064 000 017 Flute Key Click
+453 064 000 033 Shower
+454 064 000 034 Thunder
+455 064 000 035 Wind
+456 064 000 036 Stream
+457 064 000 037 Bubble
+458 064 000 038 Feed
+459 064 000 049 Dog
+460 064 000 050 Horse
+461 064 000 051 Bird Tweet 2
+462 064 000 056 Maou
+463 064 000 065 Phone Call
+464 064 000 066 Door Squeak
+465 064 000 067 Door Slam
+466 064 000 068 Scratch Cut
+467 064 000 069 Scratch Split
+468 064 000 070 Wind Chime
+469 064 000 071 Telephone Ring 2
+470 064 000 081 Car Engine Ignition
+471 064 000 082 Car Tires Squeal
+472 064 000 083 Car Passing
+473 064 000 084 Car Crash
+474 064 000 085 Siren
+475 064 000 086 Train
+476 064 000 087 Jet Plane
+477 064 000 088 Starship
+478 064 000 089 Burst
+479 064 000 090 Roller Coaster
+480 064 000 091 Submarine
+481 064 000 097 Laugh
+482 064 000 098 Scream
+483 064 000 099 Punch
+484 064 000 100 Heartbeat
+485 064 000 101 Footsteps
+486 064 000 113 Machine Gun
+487 064 000 114 Laser Gun
+488 064 000 115 Explosion
+489 064 000 116 Firework
