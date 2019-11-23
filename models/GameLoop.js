@@ -4,6 +4,8 @@
 
 */
 
+let Controller = require('node-pid-controller');
+
 function callAll(state, method, args){
 		Object.keys(state).forEach(id => {
 			if(!state[id][method]){
@@ -12,9 +14,24 @@ function callAll(state, method, args){
 			state[id][method](args);
 		});
 }
+/*
+http://eprints.gla.ac.uk/3815/1/IEEE_CS_PID_01580152.pdf
 
-function PIDController(){
-
+                Rise Time        Overshoot  Settling Time    Steady-State Error    Stability
+Increasing KP   Decrease         Increase   Small Increase   Decrease              Degrade
+Increasing KI   Small Decrease   Increase   Increase         Large Decrease        Degrade
+Increasing K D  Small Decrease   Decrease   Decrease         Minor Change          Improve
+*/
+function PIDController(target){
+	// best 0, 0.45, 0.1
+	const controller = new Controller({
+		k_p: 0.00,
+		k_i: 0.55,
+		k_d: 0.2,
+		//dt: delay/1000
+	});
+	controller.setTarget(target);
+	return controller;
 }
 
 class GameLoop {
@@ -24,6 +41,8 @@ class GameLoop {
 	} = {}){
 		this.state = {};
 		this.delay = delay;
+
+		this.controller = PIDController(this.delay);
 
 		['loop', 'update', 'render', 'start', 'stop', 'pause', 'resume', 'add', 'remove']
 			.forEach(method => {
@@ -56,9 +75,12 @@ class GameLoop {
 		this.lastRender && this.update(progress);
 		this.render();
 
-		const offset = this.lastRender
-			? 0.75 * (this.delay - progress) // P in PID
-			: 0;
+		const offset = this.controller.update(
+			this.lastRender
+				? progress
+				: this.delay
+		);
+		//console.log({ offset });
 		this.lastRender = timestamp;
 
 		setTimeout(this.loop, this.delay + offset);
