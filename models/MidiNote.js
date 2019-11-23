@@ -9,7 +9,7 @@ https://newt.phys.unsw.edu.au/jw/notes.html
 class MidiNote {
 
 	constructor({
-		channel, program, note, velocity, duration
+		channel, program, note, velocity, duration, repeat
 	}){
 
 	}
