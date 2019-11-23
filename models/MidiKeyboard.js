@@ -7,13 +7,16 @@ const async = require('async');
 const NOTE_ON /* channel 1 */ = 144;
 const NOTE_OFF /* channel 1 */ = 128;
 const PROGRAM_CHANGE /* channel 1 */ = 192;
+const CC = 176; //channel 1
+
+const BANK_SELECT_MSB = 0;
+const BANK_SELECT_LSB = 32;
 
 /* this overrides patch in track */
-const VOLUME = 42;
+const VOLUME = 50;
 
-// https://www.midi.org/specifications-old/item/gm-level-1-sound-set
-// JSON.stringify(Array.from(document.querySelectorAll('#foo tr td:last-child')).filter((x,i) => i > 2).map(x => x.innerText))
-const patchMap = ["Acoustic Grand Piano","Bright Acoustic Piano","Electric Grand Piano","Honky-tonk Piano","Electric Piano 1","Electric Piano 2","Harpsichord","Clavi","Celesta","Glockenspiel","Music Box","Vibraphone","Marimba","Xylophone","Tubular Bells","Dulcimer","Drawbar Organ","Percussive Organ","Rock Organ","Church Organ","Reed Organ","Accordion","Harmonica","Tango Accordion","Acoustic Guitar (nylon)","Acoustic Guitar (steel)","Electric Guitar (jazz)","Electric Guitar (clean)","Electric Guitar (muted)","Overdriven Guitar","Distortion Guitar","Guitar harmonics","Acoustic Bass","Electric Bass (finger)","Electric Bass (pick)","Fretless Bass","Slap Bass 1","Slap Bass 2","Synth Bass 1","Synth Bass 2","Violin","Viola","Cello","Contrabass","Tremolo Strings","Pizzicato Strings","Orchestral Harp","Timpani","String Ensemble 1","String Ensemble 2","SynthStrings 1","SynthStrings 2","Choir Aahs","Voice Oohs","Synth Voice","Orchestra Hit","Trumpet","Trombone","Tuba","Muted Trumpet","French Horn","Brass Section","SynthBrass 1","SynthBrass 2","Soprano Sax","Alto Sax","Tenor Sax","Baritone Sax","Oboe","English Horn","Bassoon","Clarinet","Piccolo","Flute","Recorder","Pan Flute","Blown Bottle","Shakuhachi","Whistle","Ocarina","Lead 1 (square)","Lead 2 (sawtooth)","Lead 3 (calliope)","Lead 4 (chiff)","Lead 5 (charang)","Lead 6 (voice)","Lead 7 (fifths)","Lead 8 (bass + lead)","Pad 1 (new age)","Pad 2 (warm)","Pad 3 (polysynth)","Pad 4 (choir)","Pad 5 (bowed)","Pad 6 (metallic)","Pad 7 (halo)","Pad 8 (sweep)","FX 1 (rain)","FX 2 (soundtrack)","FX 3 (crystal)","FX 4 (atmosphere)","FX 5 (brightness)","FX 6 (goblins)","FX 7 (echoes)","FX 8 (sci-fi)","Sitar","Banjo","Shamisen","Koto","Kalimba","Bag pipe","Fiddle","Shanai","Tinkle Bell","Agogo","Steel Drums","Woodblock","Taiko Drum","Melodic Tom","Synth Drum","Reverse Cymbal","Guitar Fret Noise","Breath Noise","Seashore","Bird Tweet","Telephone Ring","Helicopter","Applause","Gunshot"];
+const patchMap = require('../maps/gm_map.js').synths;
+const noteMap = require('../maps/notes.js');
 const xgLitePatchMap = [];
 
 const convertTime = (deltaTime) => {
@@ -39,12 +42,14 @@ const readMidi = (filename) => {
     return chunked;
 };
 
+let currentProgram;
 const playNote = (output, convertTime) => (note, callback) => {
     const { deltaTime, type, noteNumber, velocity, programNumber } = note;
     if (type === "programChange"){
-        const CC = 176; //channel 1
-        const BANK_SELECT_MSB = 0;
-        const BANK_SELECT_LSB = 32;
+        if(currentProgram === programNumber){
+          return callback();
+        }
+        currentProgram = programNumber;
         const msb = [
             CC,
             BANK_SELECT_MSB,
@@ -68,6 +73,8 @@ const playNote = (output, convertTime) => (note, callback) => {
 
           https://www.midi.org/specifications/item/table-1-summary-of-midi-message
           https://users.cs.cf.ac.uk/Dave.Marshall/Multimedia/node158.html
+
+          http://www.music-software-development.com/midi-tutorial.html
         */
         const note = [
             PROGRAM_CHANGE,
@@ -75,22 +82,25 @@ const playNote = (output, convertTime) => (note, callback) => {
         ];
         output.sendMessage(note);
 
-        console.dir({ programNumber, patch: patchMap[programNumber] })
+        console.log(`${programNumber}: ${patchMap[programNumber]}`);
         return callback();
     }
+
     const convertedNote = [
         type === 'noteOn' ? NOTE_ON : NOTE_OFF,
-        55 || noteNumber,
+        noteNumber,
         VOLUME || velocity
     ];
 
     setTimeout(() => {
         output.sendMessage(convertedNote);
         //console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
+        if(type === 'noteOn'){
+          console.log(`${noteNumber}: ${noteMap[noteNumber].note || 'XX'} - ${(noteMap[noteNumber].freq + 'Hz')}`);
+        }
         callback();
     }, convertTime(deltaTime));
 };
-
 
 class MidiKeyboard {
 
@@ -98,9 +108,14 @@ class MidiKeyboard {
 		this.output = new midi.Output();
 		this.output.openPort(port);
 
-		['play', 'closePort'].forEach(method => {
-			this[method] = this[method].bind(this);
-		});
+		['play', 'closePort', 'exit']
+			.forEach(method => {
+				this[method] = this[method].bind(this);
+			});
+		[`exit`, `SIGINT`, `SIGUSR1`, `SIGUSR2`, `uncaughtException`, `SIGTERM`]
+			.forEach((eventType) => {
+				process.on(eventType, this.exit);
+			})
 	}
 
 	readFile(filename = '2HARMO3E.MID'){
@@ -119,6 +134,25 @@ class MidiKeyboard {
 
 	closePort(){
 		this.output.closePort();
+	}
+
+	exit(){
+		if(this.exiting){
+			return process.exit();
+		}
+		this.exiting = true;
+		//see also https://github.com/jprichardson/node-death
+		setTimeout(() => {
+			const allNotesOff = [
+				CC,
+				123,
+				0
+			];
+			this.output.sendMessage(allNotesOff);
+			this.output.closePort();
+			process.exit();
+		}, 1);
+
 	}
 
 }
