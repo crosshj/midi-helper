@@ -2,13 +2,15 @@ const MidiKeyboard = require('./models/MidiKeyboard');
 const GameLoop = require('./models/GameLoop');
 
 const loop = new GameLoop({
-	keyboard: new MidiKeyboard(),
-
+	delay: 1000
 });
 const dummyId = loop.add({
 	name: 'test',
 	render: () => {
 		process.stdout.write('-');
+	},
+	update: ({ progress }) => {
+		console.log(progress);
 	}
 });
 console.log({ dummyId });
