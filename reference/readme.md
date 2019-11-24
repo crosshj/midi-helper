@@ -8,3 +8,9 @@ could just build it myself... meh
 
 small scales pack is freely available at
 https://www.feelyoursound.com/scale-chords/
+
+saw an ad on youtube that got me thinking about this
+https://www.youtube.com/watch?v=ZAeWDr6wp-A
+$$$ props to them for making ads and packaging up what seems to be freely available elsewhere $$$
+
+^^^ https://cdm.link/2019/04/youtube-censorship-hell/
