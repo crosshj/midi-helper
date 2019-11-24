@@ -75,11 +75,11 @@ class GameLoop {
 		this.lastRender && this.update(progress);
 		this.render();
 
-		const offset = this.controller.update(
+		const offset = 0; /*this.controller.update(
 			this.lastRender
 				? progress
 				: this.delay
-		);
+		);*/
 		//console.log({ offset });
 		this.lastRender = timestamp;
 
