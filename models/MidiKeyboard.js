@@ -20,48 +20,48 @@ const noteMap = require('../maps/notes.js');
 const xgLitePatchMap = [];
 
 const convertTime = (deltaTime) => {
-    if(!deltaTime){
-        return 0;
-    }
-    //TODO: should look at header info and determine this instead
-    return Number((deltaTime / 8).toFixed(2));
+	if (!deltaTime) {
+		return 0;
+	}
+	//TODO: should look at header info and determine this instead
+	return Number((deltaTime / 8).toFixed(2));
 };
 
 const readMidi = (filename) => {
-    var input = fs.readFileSync(filename);
-    var parsed = parseMidi(input);
+	var input = fs.readFileSync(filename);
+	var parsed = parseMidi(input);
 
-    const { header, tracks } = parsed;
+	const { header, tracks } = parsed;
 
-    //console.log({ header });
-    const chunked = {
-        metaTracks: tracks[0].filter(x => x.meta),
-        tracks: tracks[0].filter(x => !x.meta)
-    };
-    //console.log(chunked)
-    return chunked;
+	//console.log({ header });
+	const chunked = {
+		metaTracks: tracks[0].filter(x => x.meta),
+		tracks: tracks[0].filter(x => !x.meta)
+	};
+	//console.log(chunked)
+	return chunked;
 };
 
 let currentProgram;
 const playNote = (output, convertTime) => (note, callback) => {
-    const { deltaTime, type, noteNumber, velocity, programNumber, channel = 0 } = note;
-    if (type === "programChange"){
-        if(currentProgram === programNumber){
-          return callback();
-        }
-        currentProgram = programNumber;
-        const msb = [
-            CC + channel,
-            BANK_SELECT_MSB,
-            64
-        ];
-        //output.sendMessage(msb);
-        const lsb = [
-            CC + channel,
-            BANK_SELECT_LSB,
-            0
-        ];
-        //output.sendMessage(lsb);
+	const { deltaTime, type, noteNumber, velocity, programNumber, channel = 0 } = note;
+	if (type === "programChange") {
+		if (currentProgram === programNumber) {
+			return callback();
+		}
+		currentProgram = programNumber;
+		const msb = [
+			CC + channel,
+			BANK_SELECT_MSB,
+			64
+		];
+		//output.sendMessage(msb);
+		const lsb = [
+			CC + channel,
+			BANK_SELECT_LSB,
+			0
+		];
+		//output.sendMessage(lsb);
         /*
           Should send these before program change (true program change)
           https://www.sweetwater.com/sweetcare/articles/6-what-msb-lsb-refer-for-changing-banks-andprograms/
@@ -76,37 +76,37 @@ const playNote = (output, convertTime) => (note, callback) => {
 
           http://www.music-software-development.com/midi-tutorial.html
         */
-        const note = [
-            PROGRAM_CHANGE + channel,
-            programNumber
-        ];
-        output.sendMessage(note);
+		const note = [
+			PROGRAM_CHANGE + channel,
+			programNumber
+		];
+		output.sendMessage(note);
 
-        console.log(`${programNumber}: ${patchMap[programNumber]}`);
-        return callback();
-    }
+		console.log(`${programNumber}: ${patchMap[programNumber]}`);
+		return callback();
+	}
 
-    const convertedNote = [
-        type === 'noteOn'
-        	? NOTE_ON + channel
-        	: NOTE_OFF + channel,
-        noteNumber,
-        velocity
-    ];
+	const convertedNote = [
+		type === 'noteOn'
+			? NOTE_ON + channel
+			: NOTE_OFF + channel,
+		noteNumber,
+		velocity
+	];
 
-    setTimeout(() => {
-        output.sendMessage(convertedNote);
-        //console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
-        if(type === 'noteOn'){
-          console.log(`${noteNumber}: ${noteMap[noteNumber].note || 'XX'} - ${(noteMap[noteNumber].freq + 'Hz')}`);
-        }
-        callback();
-    }, convertTime(deltaTime));
+	setTimeout(() => {
+		output.sendMessage(convertedNote);
+		//console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
+		if (type === 'noteOn') {
+			console.log(`${noteNumber}: ${noteMap[noteNumber].note || 'XX'} - ${(noteMap[noteNumber].freq + 'Hz')}`);
+		}
+		callback();
+	}, convertTime(deltaTime));
 };
 
 class MidiKeyboard {
 
-	constructor({ port = 1} = {}){
+	constructor({ port = 1 } = {}) {
 		this.output = new midi.Output();
 		this.output.openPort(port);
 
@@ -120,34 +120,35 @@ class MidiKeyboard {
 			});
 	}
 
-	readFile(filename = '2HARMO3E.MID'){
+	readFile(filename = '2HARMO3E.MID') {
 		return readMidi(filename);
 	}
 
-	play(notes, callback){
+	play(notes, callback) {
 		const play = playNote(this.output, convertTime);
 
-		if(Array.isArray(notes)){
+		if (Array.isArray(notes)) {
 			async.eachSeries(notes, play, callback);
 			return;
 		}
 		play(notes, callback);
 	}
 
-	closePort(){
+	closePort() {
 		this.output.closePort();
 	}
 
-	exit(){
-		if(this.exiting){
+	exit() {
+		if (this.exiting) {
 			return process.exit();
 		}
 		this.exiting = true;
 		//see also https://github.com/jprichardson/node-death
 		setTimeout(() => {
-			[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].forEach(i =>{
+			const allChannels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+			allChannels.forEach(i => {
 				const allNotesOff = [
-					CC+i,
+					CC + i,
 					123,
 					0
 				];
