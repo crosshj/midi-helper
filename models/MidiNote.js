@@ -17,4 +17,4 @@ class MidiNote {
 
 }
 
-
+module.exports = MidiNote;

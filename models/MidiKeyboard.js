@@ -82,7 +82,7 @@ const playNote = (output, convertTime) => (note, callback) => {
 		];
 		output.sendMessage(note);
 
-		console.log(`${programNumber}: ${patchMap[programNumber]}`);
+		//console.log(`${programNumber}: ${patchMap[programNumber]}`);
 		return callback();
 	}
 

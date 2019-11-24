@@ -7,7 +7,7 @@ const random1 = (keys) => {
 	track[2].velocity = 50;
 	track = track.filter(x => x.noteNumber ? x.noteNumber === 67 /*&& x.type === 'noteOn'*/: true)
 	track.forEach(x => x.channel = 2);
-	console.dir(track);
+	//console.dir(track);
 	let _track = clone(track);
 
 	return {

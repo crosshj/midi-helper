@@ -2,10 +2,14 @@ const clone = obj => JSON.parse(JSON.stringify(obj));
 
 const MidiKeyboard = require('./models/MidiKeyboard');
 const GameLoop = require('./models/GameLoop');
+const ScalesPack = require('./models/ScalesPack');
 
 const random1 = require('./instruments/random1');
 const hats = require('./instruments/hats');
 const bassDrum = require('./instruments/bass_drum');
+
+//var scales = new ScalesPack();
+//console.log(scales.getMidi('c_ionian'));
 
 const keys = new MidiKeyboard();
 

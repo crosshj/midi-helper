@@ -54,7 +54,7 @@ class GameLoop {
 	}
 
 	add(item){
-		console.log({ item });
+		//console.log({ item });
 		const id = item.name;
 		this.state[id] = item;
 		return id;
