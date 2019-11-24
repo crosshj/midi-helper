@@ -44,20 +44,20 @@ const readMidi = (filename) => {
 
 let currentProgram;
 const playNote = (output, convertTime) => (note, callback) => {
-    const { deltaTime, type, noteNumber, velocity, programNumber } = note;
+    const { deltaTime, type, noteNumber, velocity, programNumber, channel = 0 } = note;
     if (type === "programChange"){
         if(currentProgram === programNumber){
           return callback();
         }
         currentProgram = programNumber;
         const msb = [
-            CC,
+            CC + channel,
             BANK_SELECT_MSB,
             64
         ];
         //output.sendMessage(msb);
         const lsb = [
-            CC,
+            CC + channel,
             BANK_SELECT_LSB,
             0
         ];
@@ -77,7 +77,7 @@ const playNote = (output, convertTime) => (note, callback) => {
           http://www.music-software-development.com/midi-tutorial.html
         */
         const note = [
-            PROGRAM_CHANGE,
+            PROGRAM_CHANGE + channel,
             programNumber
         ];
         output.sendMessage(note);
@@ -87,9 +87,11 @@ const playNote = (output, convertTime) => (note, callback) => {
     }
 
     const convertedNote = [
-        type === 'noteOn' ? NOTE_ON : NOTE_OFF,
+        type === 'noteOn'
+        	? NOTE_ON + channel
+        	: NOTE_OFF + channel,
         noteNumber,
-        VOLUME || velocity
+        velocity
     ];
 
     setTimeout(() => {
@@ -115,7 +117,7 @@ class MidiKeyboard {
 		[`exit`, `SIGINT`, `SIGUSR1`, `SIGUSR2`, `uncaughtException`, `SIGTERM`]
 			.forEach((eventType) => {
 				process.on(eventType, this.exit);
-			})
+			});
 	}
 
 	readFile(filename = '2HARMO3E.MID'){
@@ -143,12 +145,15 @@ class MidiKeyboard {
 		this.exiting = true;
 		//see also https://github.com/jprichardson/node-death
 		setTimeout(() => {
-			const allNotesOff = [
-				CC,
-				123,
-				0
-			];
-			this.output.sendMessage(allNotesOff);
+			[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].forEach(i =>{
+				const allNotesOff = [
+					CC+i,
+					123,
+					0
+				];
+				this.output.sendMessage(allNotesOff);
+			})
+
 			this.output.closePort();
 			process.exit();
 		}, 1);

@@ -4,7 +4,7 @@
 
 */
 
-let Controller = require('node-pid-controller');
+//let Controller = require('node-pid-controller');
 
 function callAll(state, method, args){
 		Object.keys(state).forEach(id => {
@@ -42,7 +42,7 @@ class GameLoop {
 		this.state = {};
 		this.delay = delay;
 
-		this.controller = PIDController(this.delay);
+		//this.controller = PIDController(this.delay);
 
 		['loop', 'update', 'render', 'start', 'stop', 'pause', 'resume', 'add', 'remove']
 			.forEach(method => {
@@ -54,7 +54,8 @@ class GameLoop {
 	}
 
 	add(item){
-		const id = 'fooo';
+		console.log({ item });
+		const id = item.name;
 		this.state[id] = item;
 		return id;
 	}
