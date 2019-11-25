@@ -14,3 +14,13 @@ https://www.youtube.com/watch?v=ZAeWDr6wp-A
 $$$ props to them for making ads and packaging up what seems to be freely available elsewhere $$$
 
 ^^^ https://cdm.link/2019/04/youtube-censorship-hell/
+
+
+
+
+http://www.ethanhein.com/wp/2010/scales-and-emotions/
+https://www.youtube.com/watch?v=dDZoGcQVjJg
+https://www.youtube.com/watch?v=eRkgK4jfi6M
+
+
+https://bost.ocks.org/mike/shuffle/
