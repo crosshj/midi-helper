@@ -21,10 +21,15 @@ class ScalesPack {
 			});
 
 		this.parse();
-		this.list();
+
+		//console.log(this.list());
+		//console.log(this.getMidi('a_major').tracks[0]);
+		//process.exit()
 	}
 
 	parse(){
+		//TODO: FILE CACHE ???
+
 		var zipEntries = this.scalesZip.getEntries();
 
 		const scales = {};

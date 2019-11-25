@@ -24,7 +24,7 @@ const convertTime = (deltaTime) => {
 		return 0;
 	}
 	//TODO: should look at header info and determine this instead
-	return Number((deltaTime / 8).toFixed(2));
+	return Number((deltaTime / 4).toFixed(2));
 };
 
 const readMidi = (filename) => {
@@ -143,6 +143,7 @@ class MidiKeyboard {
 			return process.exit();
 		}
 		this.exiting = true;
+
 		//see also https://github.com/jprichardson/node-death
 		setTimeout(() => {
 			const allChannels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
