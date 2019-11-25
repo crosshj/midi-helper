@@ -45,7 +45,6 @@ class ScalesPack {
 			scales[name] = () => {
 				try {
 					const zipBuffer = zipEntry.getData();
-					console.log(typeof zipBuffer)
 					return parseMidi(zipBuffer);
 				} catch(e){
 					console.log(`trouble parsing: ${zipEntry}`);

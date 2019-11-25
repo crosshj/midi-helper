@@ -24,7 +24,7 @@ const convertTime = (deltaTime) => {
 		return 0;
 	}
 	//TODO: should look at header info and determine this instead
-	return Number((deltaTime / 4).toFixed(2));
+	return Number((deltaTime / 2).toFixed(2));
 };
 
 const readMidi = (filename) => {
@@ -98,7 +98,7 @@ const playNote = (output, convertTime) => (note, callback) => {
 		output.sendMessage(convertedNote);
 		//console.log(`${JSON.stringify(convertedNote)} - ${convertTime(deltaTime)}`);
 		if (type === 'noteOn') {
-			console.log(`${noteNumber}: ${noteMap[noteNumber].note || 'XX'} - ${(noteMap[noteNumber].freq + 'Hz')}`);
+			//console.log(`${noteNumber}: ${noteMap[noteNumber].note || 'XX'} - ${(noteMap[noteNumber].freq + 'Hz')}`);
 		}
 		callback();
 	}, convertTime(deltaTime));
