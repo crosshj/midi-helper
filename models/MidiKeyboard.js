@@ -24,7 +24,7 @@ const convertTime = (deltaTime) => {
 		return 0;
 	}
 	//TODO: should look at header info and determine this instead
-	return Number((deltaTime / 2).toFixed(2));
+	return Number((deltaTime / 1.5).toFixed(2));
 };
 
 const readMidi = (filename) => {
