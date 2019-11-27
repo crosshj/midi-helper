@@ -12,3 +12,16 @@ a service designed to help with music creation using MIDI
     - `sudo apt-get install libasound2-dev`
     - `npm install`
     - `npm run watch`
+
+# mac
+
+install - `CXXFLAGS="-mmacosx-version-min=10.9" LDFLAGS="-mmacosx-version-min=10.9" npm install`
+
+play:
+
+  - enter Audio Midi Setup
+  - create a new configuration
+  - double click on IAC Driver
+  - tick 'Device is online'
+  - now you will have a port (but no sound)
+  - open Garage Band and add an instrument, now you'll have sound
