@@ -25,3 +25,7 @@ play:
   - tick 'Device is online'
   - now you will have a port (but no sound)
   - open Garage Band and add an instrument, now you'll have sound
+  
+  https://help.ableton.com/hc/en-us/articles/209774225-How-to-setup-a-virtual-MIDI-bus
+
+  

@@ -100,12 +100,43 @@ class ScalesPack {
 			return queue;
 		}, []);
 
+		//const foo = chords.map(x => x[0].deltaTime);
+		//console.log(foo);
+		//console.log(chords[0]);
+		// console.log(chords[0][3]);
+
+		const triads = chords
+			.filter(c => c.length === 6)
+			.reduce((all, one, index) => {
+				if(index > 0 && one[0].deltaTime > 0){
+					all.stop = true;
+				}
+				if(!all.stop){
+					all = [...all, one];
+				}
+				return all;
+			}, []);
+		triads[0][0].deltaTime = 0;
+		//console.log(triads.length)
+
+		const fourNote = [].concat.apply([], chords.slice(5));
+		fourNote[0].deltaTime = 0;
+
 		return {
 			notes: [].concat.apply([], notes),
 			chords: {
-				all: chords,
-				triads: chords.slice(0, 6),
-				fourNote: chords.slice(7, 14)
+				all: [].concat.apply([], chords),
+				triads: {
+					all: [].concat.apply([], triads),
+					1: triads[0],
+					2: triads[1],
+					3: triads[2],
+					4: triads[3],
+					5: triads[4],
+					6: triads[5],
+					7: triads[6]
+				},
+				fourNote,
 			}
 		}
 	}

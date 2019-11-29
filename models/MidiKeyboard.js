@@ -24,7 +24,7 @@ const convertTime = (deltaTime) => {
 		return 0;
 	}
 	//TODO: should look at header info and determine this instead
-	return Number((deltaTime / 1.5).toFixed(2));
+	return Number((deltaTime / .19).toFixed(2));
 };
 
 const readMidi = (filename) => {
@@ -44,7 +44,9 @@ const readMidi = (filename) => {
 
 let currentProgram;
 const playNote = (output, convertTime) => (note, callback) => {
-	const { deltaTime, type, noteNumber, velocity, programNumber, channel = 0 } = note;
+	const { deltaTime, type, noteNumber, velocity, programNumber, channel = 0, message } = note;
+	message && console.log(message);
+
 	if (type === "programChange") {
 		if (currentProgram === programNumber) {
 			return callback();
