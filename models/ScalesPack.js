@@ -67,6 +67,7 @@ class ScalesPack {
 	}
 
 	getMidiSorted(name){
+		console.log(name);
 		const thisMidi = this.getMidi(name).tracks[0]
 			.filter(x => ['noteOn', 'noteOff'].includes(x.type));
 		const notes = [];
