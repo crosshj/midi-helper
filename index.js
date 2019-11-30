@@ -101,7 +101,12 @@ function sampleOne(name, callback){
 function strumOne(name, callback){
 	const triads = scales.getMidiSorted(name).chords.triads;
 
-	let theseNotes = [];
+	const programChange = {
+		type: 'programChange',
+		programNumber: 38 //45
+	};
+
+	let theseNotes = [programChange];
 	const strummify = (chord, number) => {
 		const midiChord = new MidiChord({ series: chord, duration: 50  });
 		const delay = 5;
